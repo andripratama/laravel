@@ -1,2 +1,2 @@
 # laravel
-Make Query GRCONCAT in LARAVEL 5
+Make LARAVEL 5
