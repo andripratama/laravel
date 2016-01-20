@@ -1,0 +1,18 @@
+    public function index()
+    {
+      $user = DB::table('table_user')
+       ->selectRaw('table_user.USER_ID,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 1, table_user.STR_VALUE, NULL)) AS NAME,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 2, table_user.STR_VALUE, NULL)) AS GENDER,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 3, table_user.STR_VALUE, NULL)) AS EMAIL,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 4, table_user.STR_VALUE, NULL)) AS PHONE,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 5, table_user.STR_VALUE, NULL)) AS ADDRESS,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 6, table_user.STR_VALUE, NULL)) AS DEALERSHIP,
+        GROUP_CONCAT(IF(table_user.USER_ATTRIBUTE_ID = 7, table_user.STR_VALUE, NULL)) AS BIRTHDAY ')
+       ->paginate(5);
+       $user->setPath('user');
+       return view('infoSales', ['user'=>$user]);
+    }
+    
+    
+    
